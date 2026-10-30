@@ -22,9 +22,12 @@ function openAuth(login=false){
   const form=$("authForm");
   $("authTitle").textContent=login?"تسجيل الدخول":"إنشاء حساب";
   $("authForm").querySelectorAll("[data-signup-only]").forEach(el=>{el.hidden=login;const input=el.querySelector("input,select");if(input)input.required=!login&&input.name==="name"});
+  $("authForm").querySelectorAll("[data-login-only]").forEach(el=>el.hidden=!login);
+  $("authNote").textContent=login?"أدخل البريد الإلكتروني وكلمة المرور واختر نوع حسابك.":"أدخل بياناتك لإنشاء حساب جديد.";
+  $("authHelp").hidden=login;
   form.elements.email.autocomplete="email";
   form.elements.password.autocomplete=login?"current-password":"new-password";
-  form.querySelector('button[type="submit"]').textContent=login?"دخول":"إنشاء الحساب";
+  form.querySelector('button[type="submit"]').textContent=login?"تسجيل الدخول":"إنشاء الحساب";
   $("switchAuth").textContent=login?"إنشاء حساب جديد":"تسجيل الدخول";
   $("authDialog").showModal();
 }
@@ -39,9 +42,16 @@ $("authForm").onsubmit=async e=>{
   submit.disabled=true;
   try{
     if(isLogin){
+      const requestedRole=String(f.get("loginRole")||"");
       const {error}=await supabase.auth.signInWithPassword({email,password});
       if(error)throw error;
       await refreshSession();
+      if(!currentProfile || currentProfile.role!==requestedRole){
+        await supabase.auth.signOut();
+        await refreshSession();
+        const roleName=requestedRole==="seller"?"بائع":"مشتري";
+        throw new Error("هذا الحساب ليس مسجلاً كـ"+roleName+". اختر نوع الحساب الصحيح.");
+      }
       $("authDialog").close();
       form.reset();
       toast("تم تسجيل الدخول بنجاح.");
