@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="سوق MR — سوق موريتاني بسيط لعرض المنتجات وشرائها.">
+  <title>Souq MR | سوق موريتانيا</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Souq MR"><span class="brand-mark">س</span><span>Souq <b>MR</b></span></a>
+    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="ابحث عن هاتف، ملابس، أثاث..." aria-label="ابحث عن المنتجات"><button aria-label="بحث">⌕</button></form>
+    <nav><button class="nav-link" id="loginOpen">تسجيل الدخول</button><button class="sell-btn" id="sellOpen">＋ أضف إعلانك</button></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy"><span class="eyebrow">السوق الموريتاني بين يديك</span><h1>بيع واشتري<br><em>بكل سهولة.</em></h1><p>اكتشف منتجات قريبة منك، أو اعرض منتجاتك ليصل إليها المشترون في موريتانيا.</p><div class="hero-actions"><a href="#listings" class="primary-btn">اكتشف المنتجات</a><button class="outline-btn" id="heroSell">ابدأ البيع</button></div><div class="trust"><span>✓ سهل الاستخدام</span><span>✓ إعلانات محلية</span><span>✓ الأسعار بـ MRU</span></div></div>
+      <div class="hero-art" aria-hidden="true"><div class="art-circle"></div><div class="art-card card-one"><span>📱</span><b>هواتف وإلكترونيات</b><small>اكتشف أحدث العروض</small></div><div class="art-card card-two"><span>🛍️</span><b>كل ما تحتاجه</b><small>في مكان واحد</small></div><div class="art-bubble">MRU</div></div>
+    </section>
+
+    <section class="categories section-wrap"><div class="section-heading"><div><span class="eyebrow">تصفح حسب القسم</span><h2>ماذا تبحث عنه؟</h2></div><button class="text-btn" id="clearCategory">كل الأقسام ←</button></div><div class="category-grid" id="categoryGrid"></div></section>
+
+    <section class="listings section-wrap" id="listings"><div class="section-heading"><div><span class="eyebrow">مختارة لك</span><h2>أحدث المنتجات</h2></div><span class="result-count" id="resultCount"></span></div><div class="filters"><select id="cityFilter" aria-label="المدينة"><option value="">كل المدن</option><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select><select id="sortFilter" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="low">السعر: الأقل</option><option value="high">السعر: الأعلى</option></select></div><div class="product-grid" id="productGrid"></div><div class="empty-state" id="emptyState" hidden>لا توجد منتجات تطابق بحثك حاليًا.</div></section>
+
+    <section class="seller-banner section-wrap"><div><span class="eyebrow">لديك شيء للبيع؟</span><h2>حوّل منتجاتك إلى فرص.</h2><p>أنشئ حساب بائع وأضف إعلانك في دقائق.</p></div><button class="primary-btn" id="bannerSell">افتح متجرك الآن ←</button></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">س</span><span>Souq <b>MR</b></span></a><p>سوق موريتانيا الرقمي — نسخة تجريبية قيد التطوير.</p><small>© <span id="year"></span> Souq MR</small></footer>
+
+  <dialog id="authDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content"><span class="eyebrow">مرحبًا بك في Souq MR</span><h2 id="authTitle">إنشاء حساب</h2><p class="modal-note">اختر نوع الحساب للبدء.</p><form id="authForm"><label>الاسم الكامل<input name="name" required placeholder="اسمك"></label><label>البريد الإلكتروني<input name="email" type="email" required placeholder="name@example.com"></label><label>كلمة المرور<input name="password" type="password" minlength="6" required placeholder="6 أحرف على الأقل"></label><label>نوع الحساب<select name="role"><option value="buyer">مشتري</option><option value="seller">بائع</option></select></label><button class="primary-btn full" type="submit">إنشاء الحساب</button></form><p class="switch-auth">لديك حساب؟ <button id="switchAuth" type="button">تسجيل الدخول</button></p><p class="demo-warning">تنبيه: التسجيل في هذه النسخة تجريبي ومحلي على هذا الجهاز فقط، وليس حسابًا حقيقيًا بعد.</p></div></dialog>
+
+  <dialog id="sellDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content"><span class="eyebrow">أضف منتجك</span><h2>إعلان جديد</h2><p class="modal-note">املأ بيانات المنتج لعرضه في السوق.</p><form id="productForm"><label>اسم المنتج<input name="title" required maxlength="70" placeholder="مثال: هاتف Samsung"></label><label>السعر بالأوقية (MRU)<input name="price" type="number" min="1" required placeholder="مثال: 12000"></label><label>القسم<select name="category" id="productCategory"></select></label><label>المدينة<select name="city"><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select></label><label>رابط صورة المنتج (اختياري)<input name="image" type="url" placeholder="https://..."></label><label>وصف المنتج<textarea name="description" rows="3" maxlength="400" placeholder="اكتب تفاصيل المنتج..."></textarea></label><button class="primary-btn full" type="submit">نشر الإعلان</button></form><p class="demo-warning">الإعلانات التجريبية تحفظ في متصفحك فقط.</p></div></dialog>
+
+  <dialog id="productDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content" id="productDetails"></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
