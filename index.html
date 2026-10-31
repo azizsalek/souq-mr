@@ -7,23 +7,24 @@
   <meta name="description" content="سوق MR — سوق موريتاني بسيط لعرض المنتجات وشرائها.">
   <title>Souq MR | سوق موريتانيا</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home-refresh.css">
 </head>
 <body>
   <div class="announcement"><span>🇲🇷</span> سوقك المحلي — اكتشف عروضًا جديدة في موريتانيا <a href="#listings">تسوّق الآن ←</a></div>
   <header class="topbar">
-    <div class="profile-strip"><a class="profile-avatar" id="profileAvatar" href="dashboard.html">س</a><a class="profile-name" id="loginOpen" href="login.html">AZIZ SALEK</a><button class="sell-btn" id="sellOpen">＋ أضف إعلانك</button></div>
+    <div class="profile-strip"><a class="profile-avatar" id="profileAvatar" href="dashboard.html">س</a><a class="profile-name" id="loginOpen" href="login.html">تسجيل الدخول</a><button class="sell-btn" id="sellOpen">＋ أضف إعلانك</button></div>
   </header>
 
   <main class="phone-layout">
     <section class="hero">
       <div class="hero-photo"><div class="hero-photo-shade"></div><div class="hero-photo-copy"><span>السوق الموريتاني في يدك</span><h1>اشتري وبيع بأناقة.</h1></div></div>
-      <p class="hero-description">اكتشف منتجات من البائعين المحليين، أو قائم من منزلك لتوصل على المشترين في موريتانيا.</p>
+      <p class="hero-description">اكتشف منتجات من البائعين المحليين، أو اعرض منتجاتك من منزلك لتصل إلى المشترين في موريتانيا.</p>
       <div class="hero-actions"><a href="#listings" class="outline-btn">اكتشف المنتجات</a><button class="primary-btn" id="heroSell">ابدأ البيع</button></div>
     </section>
 
-    <form class="search" id="searchForm"><button aria-label="بحث">⌕</button><input id="searchInput" type="search" placeholder="ابحث عن هواتف، العبس، الأثاث..." aria-label="ابحث عن المنتجات"><button type="button" class="filter-button" aria-label="خيارات البحث">☷</button></form>
+    <form class="search" id="searchForm"><button aria-label="بحث">⌕</button><input id="searchInput" type="search" placeholder="ابحث عن هاتف، سيارة، ملابس، أثاث..." aria-label="ابحث عن المنتجات"><button type="button" class="filter-button" aria-label="خيارات البحث">☷</button></form>
 
-    <section class="categories section-wrap"><div class="section-heading"><div><h2>البحث بن القوقفة</h2></div><button class="text-btn" id="clearCategory">كل الأقسام ←</button></div><div class="category-grid" id="categoryGrid"></div></section>
+    <section class="categories section-wrap"><div class="section-heading"><div><h2>تسوق حسب الفئة</h2></div><button class="text-btn" id="clearCategory">كل الأقسام ←</button></div><div class="category-grid" id="categoryGrid"></div></section>
 
     <section class="listings section-wrap" id="listings"><div class="section-heading"><div><span class="eyebrow">مختارة لك</span><h2>أحدث المنتجات</h2></div><span class="result-count" id="resultCount"></span></div><div class="filters"><select id="cityFilter" aria-label="المدينة"><option value="">كل المدن</option><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select><select id="sortFilter" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="low">السعر: الأقل</option><option value="high">السعر: الأعلى</option></select></div><div class="product-grid" id="productGrid"></div><div class="empty-state" id="emptyState" hidden>لا توجد منتجات تطابق بحثك حاليًا.</div></section>
 
