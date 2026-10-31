@@ -11,27 +11,26 @@
 <body>
   <div class="announcement"><span>🇲🇷</span> سوقك المحلي — اكتشف عروضًا جديدة في موريتانيا <a href="#listings">تسوّق الآن ←</a></div>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Souq MR"><span class="brand-mark">س</span><span>Souq <b>MR</b></span></a>
-    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="ابحث عن هاتف، ملابس، أثاث..." aria-label="ابحث عن المنتجات"><button aria-label="بحث">⌕</button></form>
-    <nav><a class="nav-link" id="loginOpen" href="login.html" style="text-decoration:none">تسجيل الدخول</a><button class="sell-btn" id="sellOpen">＋ أضف إعلانك</button></nav>
+    <div class="profile-strip"><a class="profile-avatar" id="profileAvatar" href="dashboard.html">س</a><a class="profile-name" id="loginOpen" href="login.html">AZIZ SALEK</a><button class="sell-btn" id="sellOpen">＋ أضف إعلانك</button></div>
   </header>
 
-  <main>
+  <main class="phone-layout">
     <section class="hero">
-      <div class="hero-copy"><span class="eyebrow">السوق الموريتاني بين يديك</span><h1>بيع واشتري<br><em>بكل سهولة.</em></h1><p>اكتشف منتجات قريبة منك، أو اعرض منتجاتك ليصل إليها المشترون في موريتانيا.</p><div class="hero-actions"><a href="#listings" class="primary-btn">اكتشف المنتجات</a><button class="outline-btn" id="heroSell">ابدأ البيع</button></div><div class="trust"><span>✓ تجربة سهلة وآمنة</span><span>✓ منتجات من مدن موريتانيا</span><span>✓ الأسعار بالأوقية MRU</span></div></div>
-      <div class="hero-art" aria-hidden="true"><div class="art-circle"></div><div class="art-card card-one"><span>📱</span><b>هواتف وإلكترونيات</b><small>اكتشف أحدث العروض</small></div><div class="art-card card-two"><span>🛍️</span><b>كل ما تحتاجه</b><small>في مكان واحد</small></div><div class="art-bubble">MRU</div></div>
+      <div class="hero-photo"><div class="hero-photo-shade"></div><div class="hero-photo-copy"><span>السوق الموريتاني في يدك</span><h1>اشتري وبيع بأناقة.</h1></div></div>
+      <p class="hero-description">اكتشف منتجات من البائعين المحليين، أو قائم من منزلك لتوصل على المشترين في موريتانيا.</p>
+      <div class="hero-actions"><a href="#listings" class="outline-btn">اكتشف المنتجات</a><button class="primary-btn" id="heroSell">ابدأ البيع</button></div>
     </section>
 
-    <section class="benefits section-wrap"><div><span>🚚</span><b>تسوّق محليًا</b><small>اكتشف ما يعرضه البائعون في مدينتك</small></div><div><span>💬</span><b>تواصل مباشر</b><small>تواصل مع البائع لمعرفة التفاصيل</small></div><div><span>💰</span><b>أسعار واضحة</b><small>جميع الأسعار بالأوقية الموريتانية</small></div></section>
+    <form class="search" id="searchForm"><button aria-label="بحث">⌕</button><input id="searchInput" type="search" placeholder="ابحث عن هواتف، العبس، الأثاث..." aria-label="ابحث عن المنتجات"><button type="button" class="filter-button" aria-label="خيارات البحث">☷</button></form>
 
-    <section class="categories section-wrap"><div class="section-heading"><div><span class="eyebrow">تصفح حسب القسم</span><h2>ماذا تبحث عنه؟</h2></div><button class="text-btn" id="clearCategory">كل الأقسام ←</button></div><div class="category-grid" id="categoryGrid"></div></section>
+    <section class="categories section-wrap"><div class="section-heading"><div><h2>البحث بن القوقفة</h2></div><button class="text-btn" id="clearCategory">كل الأقسام ←</button></div><div class="category-grid" id="categoryGrid"></div></section>
 
     <section class="listings section-wrap" id="listings"><div class="section-heading"><div><span class="eyebrow">مختارة لك</span><h2>أحدث المنتجات</h2></div><span class="result-count" id="resultCount"></span></div><div class="filters"><select id="cityFilter" aria-label="المدينة"><option value="">كل المدن</option><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select><select id="sortFilter" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="low">السعر: الأقل</option><option value="high">السعر: الأعلى</option></select></div><div class="product-grid" id="productGrid"></div><div class="empty-state" id="emptyState" hidden>لا توجد منتجات تطابق بحثك حاليًا.</div></section>
 
     <section class="seller-banner section-wrap"><div><span class="eyebrow">لديك شيء للبيع؟</span><h2>حوّل منتجاتك إلى فرص.</h2><p>أنشئ حساب بائع وأضف إعلانك في دقائق.</p></div><button class="primary-btn" id="bannerSell">افتح متجرك الآن ←</button></section>
   </main>
 
-  <footer><a class="brand" href="#"><span class="brand-mark">س</span><span>Souq <b>MR</b></span></a><p>وجهتك لاكتشاف المنتجات والعروض المحلية في موريتانيا.</p><small>© <span id="year"></span> Souq MR</small></footer>
+  <nav class="mobile-dock"><a href="#" aria-label="الرئيسية">⌂</a><a href="#listings" aria-label="المنتجات">♧</a><a class="dock-currency" href="#listings">MRU</a><a href="dashboard.html" aria-label="الحساب">▣</a><a id="dockAccount" href="login.html" aria-label="حسابي">♙</a></nav>\n\n  <footer><a class="brand" href="#"><span class="brand-mark">س</span><span>Souq <b>MR</b></span></a><p>وجهتك لاكتشاف المنتجات والعروض المحلية في موريتانيا.</p><small>© <span id="year"></span> Souq MR</small></footer>
 
   <dialog id="authDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content"><span class="eyebrow">مرحبًا بك في Souq MR</span><h2 id="authTitle">إنشاء حساب</h2><p class="modal-note" id="authNote">أدخل بيانات إنشاء حسابك.</p><form id="authForm"><label data-signup-only>الاسم الكامل<input name="name" required autocomplete="name" placeholder="اسمك"></label><label>البريد الإلكتروني<input name="email" type="email" required autocomplete="email" inputmode="email" placeholder="name@example.com"></label><label data-signup-only>رقم الهاتف<input name="phone" type="tel" autocomplete="tel" placeholder="رقم للتواصل"></label><label data-signup-only>المدينة<select name="city"><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select></label><label>كلمة المرور<input name="password" type="password" minlength="6" required autocomplete="new-password" placeholder="6 أحرف على الأقل"></label><label data-signup-only>نوع الحساب<select name="role"><option value="buyer">مشتري</option><option value="seller">بائع</option></select></label><label data-login-only hidden>نوع الحساب<select name="loginRole"><option value="buyer">مشتري</option><option value="seller">بائع</option></select></label><button class="primary-btn full" type="submit">إنشاء الحساب</button></form><p class="switch-auth">لديك حساب؟ <button id="switchAuth" type="button">تسجيل الدخول</button></p><p class="demo-warning" id="authHelp">يتم إنشاء حسابك عبر البريد الإلكتروني وكلمة المرور. يمكنك الدخول باستخدام بريدك الإلكتروني وكلمة المرور.</p></div></dialog>
 
