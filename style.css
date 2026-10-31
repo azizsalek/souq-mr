@@ -16,3 +16,26 @@
 .product-information{display:grid;gap:15px;margin-top:22px}.info-card h2{font-size:18px;margin:0 0 14px}.product-description{white-space:pre-wrap;line-height:2;color:#4e625c;font-size:14px}.feature-list{margin:0;padding-right:22px;line-height:2.1;font-size:13px}.detail-table{max-width:750px}.related-section{margin-top:48px}.related-section .product-grid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:800px){.product-detail-layout{grid-template-columns:1fr}.product-main-image{height:330px}.related-section .product-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.product-page{padding:22px 14px}.product-gallery,.product-summary,.info-card{padding:15px}.product-main-image{height:270px}.product-summary h1{font-size:22px}.detail-price{font-size:23px}.related-section .section-heading{align-items:start;gap:10px}.related-section .section-heading h2{font-size:21px}}
+
+
+/* Souq MR — dark emerald & champagne-gold visual refresh */
+:root{--ink:#f4e6bd;--muted:#c0c7b7;--green:#d8b96e;--green-dark:#b99a52;--mint:#173d34;--line:#9d8958;--paper:#071d18;--white:#102c25;--orange:#e2c47e;--shadow:0 14px 38px rgba(0,0,0,.25);--shadow-lg:0 22px 60px rgba(0,0,0,.38)}
+html{background:#061a15}
+body{background:radial-gradient(ellipse at 8% 20%,#174337 0,transparent 36%),radial-gradient(ellipse at 90% 75%,#183e34 0,transparent 34%),#061a15;color:#f1e3bd}
+.announcement{background:#d9d9c2;color:#17352b;font-size:13px;font-weight:700;padding:9px 12px}
+.announcement a{color:#244b3d}
+.topbar{background:#0b2921ed;border-bottom:1px solid #a58e59;box-shadow:0 12px 30px #0003}
+.brand{color:#f2dfaa}.brand b{color:#e0c27d}.brand-mark{background:linear-gradient(145deg,#f1dfaa,#c5a45f);color:#102a21;box-shadow:0 5px 18px #0005}
+.search{background:#09241d;border:1px solid #b39a60;border-radius:30px}.search input{color:#f4e6bd}.search input::placeholder{color:#c9bd9b}.search button{background:#d9bd7c;color:#10281f;border-radius:50%}
+.nav-link{color:#f0dfb4}.sell-btn,.primary-btn{background:linear-gradient(110deg,#e9d49b,#c5a15c);color:#132a21;border:1px solid #f3dfaa;border-radius:30px;box-shadow:0 5px 15px #0002}.sell-btn:hover,.primary-btn:hover{background:#f0dca4;color:#10271e}
+.hero{max-width:1120px;margin:25px auto 0;padding:30px 42px;min-height:0;grid-template-columns:1fr 1fr;gap:22px;background:linear-gradient(145deg,#12382e,#09231c 70%);border:1px solid #9e8958;border-radius:24px;box-shadow:var(--shadow-lg)}
+.hero-copy{max-width:none}.eyebrow{color:#ddc27e}.hero h1{color:#f1e2b9;font-size:clamp(40px,4.8vw,60px)}.hero h1 em{color:#dfc17a}.hero p{color:#d1c9ae}.outline-btn{background:transparent;border:1px solid #dfc783;color:#ead69f;border-radius:30px}.outline-btn:hover{background:#20483a}
+.trust{color:#cfc5a7}.hero-art{border-radius:20px;background:linear-gradient(145deg,#24483b,#102d25);border:1px solid #8c7a50;overflow:hidden}.art-circle{background:linear-gradient(145deg,#d8c48c,#8d7441);box-shadow:0 0 0 22px #315344,0 0 0 44px #1b3e32}.art-card{background:#e9e0c9;color:#19352b;border-color:#d5c28e}.art-card small{color:#657469}.art-bubble{background:#e2c783;color:#152d24;border-color:#173b30}
+.section-wrap{color:#f0e2bd}.benefits>div,.category,.product-card,.empty-state{background:#102c24;border:1px solid #86764d;color:#f0e2bd;box-shadow:var(--shadow)}.benefits span{background:#1d493a}.benefits small,.result-count,.product-meta{color:#c2b99e}.section-heading h2,.seller-banner h2{color:#f0dfb4}.text-btn{color:#e3c77e}.category:hover,.category.active{background:#1c4739;border-color:#e0c27b}.product-image{background:linear-gradient(145deg,#1c493b,#102b23)}.price{color:#e3c77e}.filters select,.modal select{background:#102c24;border-color:#88784f;color:#f0e2bd}
+.seller-banner{background:linear-gradient(110deg,#173f33,#0d2921);border-color:#9b8754}.seller-banner p{color:#c9c0a7}
+footer{background:#09231c;border-color:#88764b;color:#f0e2bd}footer p,footer small{color:#c6bda3}
+.modal{background:#102c24;color:#f0e2bd;border:1px solid #9b8754}.modal-content input,.modal-content textarea,.modal-content select{background:#09231c;border-color:#756b4b;color:#f4e6bd}.modal-close button{background:#24483a;color:#f0dfb4}.demo-warning{background:#3d3421;color:#ead6a5}
+.product-gallery,.product-summary,.info-card,.purchase-box{background:#102c24;border-color:#8b7950;color:#f0e2bd}.product-main-image{background:#183d31}.product-description,.detail-row span{color:#c9c0a7}
+.toast{background:#e4ca88;color:#142b22}
+@media(max-width:900px){.hero{margin:14px 14px 0;padding:26px 22px;grid-template-columns:1fr}.hero-art{height:250px}.topbar{background:#0b2921}}
+@media(max-width:520px){.announcement{font-size:11px}.topbar{padding:10px 14px}.hero{border-radius:18px;padding:24px 18px}.hero-art{height:220px}.hero h1{font-size:39px}.section-wrap{padding:34px 15px}.category{border-radius:17px}.product-card{border-radius:16px}}
