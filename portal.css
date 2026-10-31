@@ -37,3 +37,54 @@ th{background:#18392e;color:#ddc994}
 a{color:#e4ca89}
 @media(max-width:850px){.sidebar{background:#0d2b22}.side-link{background:#102f26}}
 @media(max-width:650px){.portal-top{padding:0 16px}.portal-shell{padding:0 14px;margin:18px auto}.auth-aside{border:0;border-bottom:1px solid #927e50}}
+
+
+/* Souq MR shared emerald & champagne-gold theme — aligned with homepage */
+:root{
+  --ink:#f1e3bd;--muted:#c9c0a7;--green:#dfc17a;--line:#88764b;
+  --paper:#061a15;--gold:#dfc17a;--deep:#0b2921;--surface:#102c24;
+  --surface-2:#173d32;--shadow:0 14px 38px rgba(0,0,0,.25);
+}
+html{background:#061a15}
+body{background:radial-gradient(ellipse at 8% 18%,#174337 0,transparent 36%),radial-gradient(ellipse at 92% 82%,#183e34 0,transparent 34%),#061a15;color:var(--ink)}
+.portal-top{background:#0b2921ed;border-bottom:1px solid #a58e59;box-shadow:0 10px 28px #0003}
+.brand{color:#f2dfaa}.brand b{color:#dfc17a}
+.portal-top small{color:#c9c0a7!important}
+.portal-top .btn,.btn{background:linear-gradient(110deg,#e9d49b,#c5a15c);color:#132a21;border:1px solid #f3dfaa;border-radius:12px;box-shadow:0 5px 15px #0002}
+.portal-top .btn:hover,.btn:hover{background:#f0dca4;color:#10271e}
+.btn.light{background:#173d32;color:#e8d49a;border:1px solid #9b8754;box-shadow:none}
+.btn.danger{background:#4a2925;color:#ffd2c9;border:1px solid #9b5c50;box-shadow:none}
+.sidebar,.panel,.stat,.auth-box{background:linear-gradient(145deg,#12352b,#0d2921);border:1px solid #88764b;color:#f1e3bd;box-shadow:var(--shadow)}
+.sidebar{border-radius:18px}
+.side-title,.muted,.stat small{color:#c9c0a7}
+.side-link{color:#eadfbd}
+.side-link.active,.side-link:hover{background:#24483a;color:#f0d99a}
+.page-head h1,.panel h2,.auth-box h2{color:#f2dfb4}
+.stat strong{color:#f0d99a}
+th{background:#173d32;color:#e1d1a5}
+td,th{border-color:#665d40;color:#eadfbd}
+tr:hover td{background:#17382e}
+.badge{background:#21483a;color:#e9d49b}
+.badge.pending{background:#4b3b20;color:#f3d38b}
+.badge.cancelled{background:#4a2925;color:#ffd2c9}
+.field input,.field select,.field textarea,.auth-box input,.auth-box select{
+ background:#09241d;border:1px solid #88764b;color:#f4e6bd;border-radius:11px
+}
+.field input::placeholder,.auth-box input::placeholder{color:#bdb394}
+.field input:focus,.field select:focus,.field textarea:focus,.auth-box input:focus,.auth-box select:focus{
+ outline:2px solid #dfc17a;outline-offset:1px
+}
+.empty{background:#0d2921;color:#c9c0a7;border:1px dashed #88764b}
+.notice{background:#1c4739;color:#e6d6a8;border:1px solid #806f49}
+.auth-page{background:radial-gradient(ellipse at 10% 15%,#174337 0,transparent 40%),#061a15}
+.auth-aside{background:linear-gradient(145deg,#173f33,#09231c);border-left:1px solid #927e50}
+.auth-aside p{color:#d1c9ae}
+.auth-box-wrap{background:transparent}
+.auth-box{border-radius:22px}
+.auth-switch{color:#c9c0a7}
+.auth-switch a{color:#e3c77e}
+.toast{background:#e4ca88;color:#142b22;border:1px solid #f3dfaa;box-shadow:var(--shadow)}
+a{transition:color .18s ease}
+a:hover{color:#f0d99a}
+@media(max-width:850px){.sidebar{background:#102c24;border:1px solid #88764b}.side-link{flex:0 0 auto}}
+@media(max-width:650px){.auth-aside{border-left:0;border-bottom:1px solid #927e50}.auth-box{padding:25px 20px}}
