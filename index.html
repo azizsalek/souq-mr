@@ -1,50 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0f766e">
-  <meta name="description" content="سوق MR — سوق موريتاني بسيط لعرض المنتجات وشرائها.">
-  <title>Souq MR | سوق موريتانيا</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="home-refresh.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Souq MR - السوق الموريتاني الأول</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            800: '#064e3b',
+                            900: '#022c22',
+                            gold: '#fbbf24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: radial-gradient(#064e3b 0.5px, transparent 0.5px), radial-gradient(#064e3b 0.5px, #ffffff 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.03;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body>
-  <div class="announcement"><span>🇲🇷</span> سوقك المحلي — اكتشف عروضًا جديدة في جميع الولايات الموريتانية <a href="#listings">تسوّق الآن ←</a></div>
-  <header class="topbar">
-    <div class="profile-strip"><a class="profile-avatar" id="profileAvatar" href="dashboard.html">س</a><a class="profile-name" id="loginOpen" href="login.html">تسجيل الدخول</a><button class="sell-btn" id="sellOpen">＋ أضف إعلانك</button></div>
-  </header>
+<body class="text-slate-800 antialiased pb-20 md:pb-0">
 
-  <main class="phone-layout">
-    <section class="hero">
-      <div class="hero-photo"><div class="hero-photo-shade"></div><div class="hero-photo-copy"><span>السوق الموريتاني الأصيل بين يديك</span><h1>بيع واشتري بكل سهولة وأمان.</h1></div></div>
-      <p class="hero-description">اكتشف آلاف المنتجات والإعلانات القريبة منك في نواكشوط، نواذيبو، وباقي الولايات الموريتانية.</p>
-      <div class="hero-actions"><a href="#listings" class="outline-btn">اكتشف جميع المنتجات</a><button class="primary-btn" id="heroSell">ابدأ البيع</button></div><div class="trust-badges"><span>✓ تجربة سهلة</span><span>♧ منتجات محلية</span><span>◉ الأسعار بالأوقية MRU</span></div>
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-900 text-slate-100 text-xs py-2 px-4 text-center flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+        <span>🇲🇷 سوقك المحلي — اكتشف عروضًا جديدة في جميع الولايات الموريتانية</span>
+        <a href="#featured" class="underline text-brand-gold font-bold hover:text-amber-300 mr-1">تسوق الآن &larr;</a>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-4">
+                <div class="flex items-center gap-3">
+                    <button onclick="showSection('home')" class="flex items-center gap-2 group text-right">
+                        <div class="w-10 h-10 rounded-2xl bg-brand-800 text-white flex items-center justify-center font-black text-xl shadow-md group-hover:scale-105 transition-transform">س</div>
+                        <div>
+                            <span class="text-lg font-black tracking-tight text-brand-800 block leading-none">Souq <span class="text-brand-gold">MR</span></span>
+                            <span class="text-[10px] text-slate-400 font-semibold">السوق الموريتاني الأول</span>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="hidden md:flex flex-1 max-w-lg mx-4">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="ابحث عن هاتف، سيارة، ملابس، عقار..." class="w-full pl-10 pr-11 py-2.5 bg-slate-100 border border-slate-200 rounded-full text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brand-800 focus:bg-white transition-all">
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-solid fa-magnifying-glass text-sm"></i></div>
+                        <button class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-brand-800 hover:bg-brand-900 text-white p-1.5 rounded-full text-xs transition"><i class="fa-solid fa-sliders text-xs px-1"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="searchToggleMobile" class="md:hidden w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200"><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <button onclick="showSection('profile-section')" class="flex items-center gap-2 p-1.5 pl-3 rounded-full border border-slate-200 hover:border-brand-800 transition bg-slate-50 hover:bg-white">
+                        <div class="w-7 h-7 rounded-full bg-brand-800 text-white text-xs flex items-center justify-center font-bold">ع</div>
+                        <span class="text-xs font-bold text-slate-700 hidden sm:inline">AZIZ SALEK</span>
+                    </button>
+                    <button onclick="openAddModal()" class="bg-brand-800 hover:bg-brand-900 text-white px-3.5 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 active:scale-95"><i class="fa-solid fa-plus text-brand-gold"></i><span>أضف إعلانك</span></button>
+                </div>
+            </div>
+
+            <div id="mobileSearchInput" class="pb-3 md:hidden hidden">
+                <div class="relative w-full">
+                    <input type="text" placeholder="ابحث عن هاتف، سيارة، ملابس..." class="w-full pl-10 pr-10 py-2 bg-slate-100 border border-slate-200 rounded-full text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brand-800">
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-solid fa-magnifying-glass text-xs"></i></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="relative overflow-hidden hero-pattern border-b border-slate-100 py-10 md:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <span class="inline-block px-3 py-1 bg-brand-50 text-brand-800 rounded-full text-xs font-bold mb-3 border border-brand-100">✨ السوق الموريتاني الأصيل بين يديك</span>
+                <h1 class="text-3xl sm:text-5xl font-black text-slate-900 leading-tight mb-4 max-w-2xl mx-auto">بيع واشتري بكل <span class="text-brand-800 underline decoration-brand-gold decoration-4">سهولة وأمان</span>.</h1>
+                <p class="text-xs sm:text-base text-slate-500 max-w-xl mx-auto mb-8 leading-relaxed">اكتشف آلاف المنتجات والإعلانات القريبة منك في نواكشوط، نواذيبو، وباقي الولايات الموريتانية.</p>
+                <div class="flex items-center justify-center gap-3">
+                    <a href="#featured" class="px-8 py-3.5 bg-brand-800 hover:bg-brand-900 text-white rounded-full text-sm font-extrabold shadow-lg shadow-brand-800/20 transition-all hover:scale-105 active:scale-95"><i class="fa-solid fa-compass ml-2"></i> اكتشف جميع المنتجات</a>
+                </div>
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 font-semibold border-t border-slate-200/60 pt-6">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-500"></i> تجربة سهلة وآمنة</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-brand-500"></i> منتجات موثوقة من مدينتك</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-tag text-brand-500"></i> الأسعار بالأوقية (MRU)</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+                <div><h2 class="text-lg md:text-xl font-black text-slate-900">تصفح حسب الأقسام</h2><p class="text-xs text-slate-500 mt-0.5">اختر الفئة التي تبحث عنها</p></div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                <a href="#" class="group p-4 bg-white rounded-2xl border border-slate-100 hover:border-brand-800 hover:shadow-md transition text-center flex flex-col items-center"><div class="w-12 h-12 rounded-xl bg-emerald-50 text-brand-800 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-mobile-screen-button"></i></div><span class="text-xs font-bold text-slate-800">هواتف وإلكترونيات</span><span class="text-[10px] text-slate-400 mt-1">+1,200 إعلان</span></a>
+                <a href="#" class="group p-4 bg-white rounded-2xl border border-slate-100 hover:border-brand-800 hover:shadow-md transition text-center flex flex-col items-center"><div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-car"></i></div><span class="text-xs font-bold text-slate-800">سيارات ومركبات</span><span class="text-[10px] text-slate-400 mt-1">+850 إعلان</span></a>
+                <a href="#" class="group p-4 bg-white rounded-2xl border border-slate-100 hover:border-brand-800 hover:shadow-md transition text-center flex flex-col items-center"><div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-house"></i></div><span class="text-xs font-bold text-slate-800">عقارات وأراضي</span><span class="text-[10px] text-slate-400 mt-1">+430 إعلان</span></a>
+                <a href="#" class="group p-4 bg-white rounded-2xl border border-slate-100 hover:border-brand-800 hover:shadow-md transition text-center flex flex-col items-center"><div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-shirt"></i></div><span class="text-xs font-bold text-slate-800">ملابس وأزياء</span><span class="text-[10px] text-slate-400 mt-1">+2,100 إعلان</span></a>
+                <a href="#" class="group p-4 bg-white rounded-2xl border border-slate-100 hover:border-brand-800 hover:shadow-md transition text-center flex flex-col items-center"><div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-couch"></i></div><span class="text-xs font-bold text-slate-800">أثاث ومنزل</span><span class="text-[10px] text-slate-400 mt-1">+600 إعلان</span></a>
+                <a href="#" class="group p-4 bg-white rounded-2xl border border-slate-100 hover:border-brand-800 hover:shadow-md transition text-center flex flex-col items-center"><div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center text-xl mb-2 group-hover:scale-110 transition-transform"><i class="fa-solid fa-border-all"></i></div><span class="text-xs font-bold text-slate-800">جميع الأقسام</span><span class="text-[10px] text-slate-400 mt-1">تصفح الكل</span></a>
+            </div>
+        </section>
+
+        <section id="featured" class="py-8 bg-slate-100/60 border-y border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-6"><div><h2 class="text-lg md:text-xl font-black text-slate-900">أحدث العروض والمنتجات</h2><p class="text-xs text-slate-500 mt-0.5">منتجات ممتازة أضيفت مؤخراً</p></div><a href="#" class="text-xs font-bold text-brand-800 hover:underline">عرض الكل &larr;</a></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-md transition group"><div class="relative h-44 bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80" alt="iPhone 14 Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"><span class="absolute top-2 right-2 bg-brand-800 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">مميز</span><button class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm text-slate-600 hover:text-rose-500 flex items-center justify-center transition"><i class="fa-regular fa-heart text-xs"></i></button></div><div class="p-4"><div class="flex items-center justify-between text-[11px] text-slate-400 mb-1"><span><i class="fa-solid fa-location-dot ml-1"></i>نواكشوط، تفرغ زينة</span><span>منذ ساعتين</span></div><h3 class="font-bold text-slate-800 text-sm mb-2 line-clamp-1">آيفون 14 برو ماكس 256GB جديد</h3><div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-2"><div class="text-brand-800 font-black text-base">32,000 <span class="text-xs font-bold">MRU</span></div><button class="text-xs font-bold text-brand-800 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition">التفاصيل</button></div></div></div>
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-md transition group"><div class="relative h-44 bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&auto=format&fit=crop&q=80" alt="Car" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"><button class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm text-slate-600 hover:text-rose-500 flex items-center justify-center transition"><i class="fa-regular fa-heart text-xs"></i></button></div><div class="p-4"><div class="flex items-center justify-between text-[11px] text-slate-400 mb-1"><span><i class="fa-solid fa-location-dot ml-1"></i>نواذيبو</span><span>منذ 5 ساعات</span></div><h3 class="font-bold text-slate-800 text-sm mb-2 line-clamp-1">تويوتا كورولا موديل 2018 نظيفة</h3><div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-2"><div class="text-brand-800 font-black text-base">210,000 <span class="text-xs font-bold">MRU</span></div><button class="text-xs font-bold text-brand-800 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition">التفاصيل</button></div></div></div>
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-md transition group"><div class="relative h-44 bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&auto=format&fit=crop&q=80" alt="Furniture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"><button class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm text-slate-600 hover:text-rose-500 flex items-center justify-center transition"><i class="fa-regular fa-heart text-xs"></i></button></div><div class="p-4"><div class="flex items-center justify-between text-[11px] text-slate-400 mb-1"><span><i class="fa-solid fa-location-dot ml-1"></i>نواكشوط، لكصر</span><span>أمس</span></div><h3 class="font-bold text-slate-800 text-sm mb-2 line-clamp-1">طقم صالون فاخر يتسع لـ 8 أشخاص</h3><div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-2"><div class="text-brand-800 font-black text-base">18,500 <span class="text-xs font-bold">MRU</span></div><button class="text-xs font-bold text-brand-800 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition">التفاصيل</button></div></div></div>
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-md transition group"><div class="relative h-44 bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=80" alt="Watch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"><button class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm text-slate-600 hover:text-rose-500 flex items-center justify-center transition"><i class="fa-regular fa-heart text-xs"></i></button></div><div class="p-4"><div class="flex items-center justify-between text-[11px] text-slate-400 mb-1"><span><i class="fa-solid fa-location-dot ml-1"></i>نواكشوط، عرفات</span><span>أمس</span></div><h3 class="font-bold text-slate-800 text-sm mb-2 line-clamp-1">ساعة ذكية أبل واتش الإصدار الثامن</h3><div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-2"><div class="text-brand-800 font-black text-base">9,200 <span class="text-xs font-bold">MRU</span></div><button class="text-xs font-bold text-brand-800 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition">التفاصيل</button></div></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="profile-section" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm mb-8"><div class="flex flex-col md:flex-row items-center justify-between gap-6"><div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-right"><div class="relative"><div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-brand-800 text-white flex items-center justify-center text-3xl font-black border-4 border-brand-gold shadow-md">ع</div><button class="absolute bottom-0 right-0 bg-white border border-slate-200 text-slate-700 w-8 h-8 rounded-full flex items-center justify-center shadow-sm text-xs hover:bg-slate-50"><i class="fa-solid fa-camera"></i></button></div><div><div class="flex items-center gap-2 justify-center sm:justify-start"><h1 class="text-xl md:text-2xl font-black text-slate-900">عزيز سالك (AZIZ SALEK)</h1><span class="bg-emerald-100 text-brand-800 text-[10px] font-bold px-2 py-0.5 rounded-full">حساب موثق <i class="fa-solid fa-circle-check"></i></span></div><p class="text-xs text-slate-500 mt-1">عضو منذ يناير 2024 • نواكشوط، موريتانيا</p><p class="text-xs font-bold text-brand-800 mt-1">📱 46 00 00 00</p></div></div><div class="flex items-center gap-3 w-full sm:w-auto"><button onclick="showSection('home')" class="flex-1 sm:flex-none px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">العودة للمتجر</button><button class="flex-1 sm:flex-none px-5 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl text-xs font-bold transition">تسجيل الخروج</button></div></div></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="space-y-4"><div class="bg-gradient-to-br from-brand-900 to-brand-800 rounded-2xl p-5 text-white shadow-md"><div class="flex justify-between items-center mb-3"><span class="text-xs text-emerald-200 font-bold">محفظة Souq MR</span><i class="fa-solid fa-wallet text-brand-gold text-lg"></i></div><div class="text-2xl font-black mb-1">4,500 <span class="text-xs font-normal text-brand-gold">MRU</span></div><p class="text-[10px] text-slate-300">يمكنك استخدام الرصيد لترويج إعلاناتك</p><button class="mt-4 w-full py-2 bg-brand-gold hover:bg-amber-400 text-slate-900 font-extrabold rounded-xl text-xs transition">شحن الرصيد</button></div><div class="bg-white rounded-2xl border border-slate-200 p-2 space-y-1 shadow-sm"><button class="w-full text-right px-4 py-3 rounded-xl bg-brand-50 text-brand-800 font-bold text-xs flex items-center justify-between"><span class="flex items-center gap-3"><i class="fa-solid fa-box text-base"></i> طلباتي ورسائلي</span><span class="bg-brand-800 text-white text-[10px] px-2 py-0.5 rounded-full">3 جديدة</span></button><button class="w-full text-right px-4 py-3 rounded-xl text-slate-700 hover:bg-slate-50 font-bold text-xs flex items-center justify-between"><span class="flex items-center gap-3"><i class="fa-regular fa-heart text-base text-rose-500"></i> المفضلة</span><span class="text-slate-400 text-xs">12</span></button><button class="w-full text-right px-4 py-3 rounded-xl text-slate-700 hover:bg-slate-50 font-bold text-xs flex items-center justify-between"><span class="flex items-center gap-3"><i class="fa-solid fa-bullhorn text-base text-amber-500"></i> إعلاناتي النشطة</span><span class="text-slate-400 text-xs">4</span></button><button class="w-full text-right px-4 py-3 rounded-xl text-slate-700 hover:bg-slate-50 font-bold text-xs flex items-center justify-between"><span class="flex items-center gap-3"><i class="fa-solid fa-gear text-base text-slate-500"></i> إعدادات الحساب</span></button><button class="w-full text-right px-4 py-3 rounded-xl text-slate-700 hover:bg-slate-50 font-bold text-xs flex items-center justify-between"><span class="flex items-center gap-3"><i class="fa-solid fa-headset text-base text-emerald-500"></i> الدعم والمساندة</span></button></div></div><div class="md:col-span-2 space-y-6"><div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4"><div class="flex items-center justify-between border-b border-slate-100 pb-3"><h3 class="font-bold text-sm text-slate-800">إعلاناتي الحالية (2)</h3><button onclick="openAddModal()" class="text-xs text-brand-800 font-bold hover:underline">+ إعلان جديد</button></div><div class="space-y-3"><div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/60 gap-3"><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100&auto=format&fit=crop&q=60" class="w-12 h-12 rounded-lg object-cover" alt="Phone"><div><h4 class="text-xs font-bold text-slate-800">آيفون 14 برو ماكس 256GB</h4><p class="text-[10px] text-slate-400">السعر: 32,000 MRU • المشاهدات: 142</p></div></div><div class="flex items-center gap-2"><button class="px-2.5 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-[10px] font-bold">تعديل</button><button class="px-2.5 py-1 bg-rose-50 text-rose-600 rounded-lg text-[10px] font-bold">حذف</button></div></div><div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/60 gap-3"><div class="flex items-center gap-3"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=100&auto=format&fit=crop&q=60" class="w-12 h-12 rounded-lg object-cover" alt="Sofa"><div><h4 class="text-xs font-bold text-slate-800">طقم صالون فاخر مستعمل</h4><p class="text-[10px] text-slate-400">السعر: 18,500 MRU • المشاهدات: 89</p></div></div><div class="flex items-center gap-2"><button class="px-2.5 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-[10px] font-bold">تعديل</button><button class="px-2.5 py-1 bg-rose-50 text-rose-600 rounded-lg text-[10px] font-bold">حذف</button></div></div></div></div><div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4"><h3 class="font-bold text-sm text-slate-800 border-b border-slate-100 pb-3">سجل الطلبات الشراء</h3><div class="text-center py-6 text-slate-400 space-y-2"><i class="fa-solid fa-bag-shopping text-3xl text-slate-300"></i><p class="text-xs font-medium">لا توجد طلبات جارية حالياً</p></div></div></div></div>
     </section>
 
-    <form class="search" id="searchForm"><button aria-label="بحث">⌕</button><input id="searchInput" type="search" placeholder="ابحث عن هاتف، سيارة، ملابس، أثاث..." aria-label="ابحث عن المنتجات"><button type="button" class="filter-button" aria-label="خيارات البحث">☷</button></form>
+    <footer class="bg-slate-900 text-slate-400 py-10 mt-12 border-t border-slate-800"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"><div><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-xl bg-brand-800 text-white flex items-center justify-center font-black text-sm">س</div><span class="text-lg font-black text-white">Souq <span class="text-brand-gold">MR</span></span></div><p class="text-xs leading-relaxed">السوق الإلكتروني الأول والموثوق في موريتانيا لبيع وشراء السيارات والهواتف والعقارات بكل سهولة.</p></div><div><h4 class="text-white text-xs font-bold mb-3">روابط سريعة</h4><ul class="space-y-2 text-xs"><li><a href="#" class="hover:text-white">عن منصة Souq MR</a></li><li><a href="#" class="hover:text-white">شروط الاستخدام</a></li><li><a href="#" class="hover:text-white">سياسة الخصوصية</a></li></ul></div><div><h4 class="text-white text-xs font-bold mb-3">الأقسام الأكثر شيوعاً</h4><ul class="space-y-2 text-xs"><li><a href="#" class="hover:text-white">الهواتف والأجهزة</a></li><li><a href="#" class="hover:text-white">السيارات والمركبات</a></li><li><a href="#" class="hover:text-white">العقارات والمنازل</a></li></ul></div><div><h4 class="text-white text-xs font-bold mb-3">تواصل معنا</h4><p class="text-xs mb-2">نواكشوط - موريتانيا</p><p class="text-xs text-brand-gold font-bold">support@souq.mr</p></div></div><div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">جميع الحقوق محفوظة © 2026 Souq MR</div></div></footer>
 
-    <section class="categories section-wrap"><div class="section-heading"><div><h2>تصفح حسب الأقسام</h2></div><button class="text-btn" id="clearCategory">كل الأقسام ←</button></div><div class="category-grid" id="categoryGrid"></div></section>
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 md:hidden px-4 py-2">
+        <div class="flex items-center justify-between max-w-sm mx-auto">
+            <button onclick="showSection('home')" class="flex flex-col items-center gap-1 text-brand-800 font-bold"><i class="fa-solid fa-house text-lg"></i><span class="text-[10px]">الرئيسية</span></button>
+            <a href="#categories" onclick="showSection('home')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-800"><i class="fa-solid fa-layer-group text-lg"></i><span class="text-[10px]">الأقسام</span></a>
+            <button onclick="openAddModal()" class="flex flex-col items-center -mt-6"><div class="w-12 h-12 rounded-full bg-brand-800 hover:bg-brand-900 text-white flex items-center justify-center shadow-lg border-4 border-white text-xl"><i class="fa-solid fa-plus text-brand-gold"></i></div><span class="text-[10px] font-bold text-slate-700 mt-0.5">أضف إعلان</span></button>
+            <a href="#" class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-800"><i class="fa-regular fa-comment-dots text-lg"></i><span class="text-[10px]">الرسائل</span></a>
+            <button onclick="showSection('profile-section')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-800"><i class="fa-regular fa-user text-lg"></i><span class="text-[10px]">حسابي</span></button>
+        </div>
+    </div>
 
-    <section class="listings section-wrap" id="listings"><div class="section-heading"><div><span class="eyebrow">مختارة لك</span><h2>أحدث العروض والمنتجات</h2></div><span class="result-count" id="resultCount"></span></div><div class="filters"><select id="cityFilter" aria-label="المدينة"><option value="">كل المدن</option><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select><select id="sortFilter" aria-label="الترتيب"><option value="new">الأحدث أولاً</option><option value="low">السعر: الأقل</option><option value="high">السعر: الأعلى</option></select></div><div class="product-grid" id="productGrid"></div><div class="empty-state" id="emptyState" hidden>لا توجد منتجات تطابق بحثك حاليًا.</div></section>
-
-    <section class="seller-banner section-wrap"><div><span class="eyebrow">لديك شيء للبيع؟</span><h2>حوّل منتجاتك إلى فرص.</h2><p>أنشئ حساب بائع وأضف إعلانك في دقائق.</p></div><button class="primary-btn" id="bannerSell">افتح متجرك الآن ←</button></section>
-  </main>
-
-  <nav class="mobile-dock" aria-label="التنقل الرئيسي">
-    <a href="#" aria-label="الرئيسية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1h-5.3v-6.2H9.4V21H4.1A1.1 1.1 0 0 1 3 19.9z"/></svg></a>
-    <a href="#listings" aria-label="المنتجات"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 4 2 4-2 5 3-2.2 5-2.8-1.2V21H8V10.8L5.2 12 3 7z"/></svg></a>
-    <a class="dock-currency" href="#listings" aria-label="العملة: الأوقية الموريتانية">MRU</a>
-    <a href="dashboard.html" aria-label="المحفظة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h14.5A2.5 2.5 0 0 1 21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a3 3 0 0 1 3-3h12v3.5M3 9h18v6h-5a3 3 0 0 1 0-6h5"/><path d="M16 12h.01"/></svg></a>
-    <a id="dockAccount" href="login.html" aria-label="حسابي"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4 21c.4-4.2 3.5-6.5 8-6.5s7.6 2.3 8 6.5"/></svg></a>
-  </nav>\n\n  <footer><a class="brand" href="#"><span class="brand-mark">س</span><span>Souq <b>MR</b></span></a><p>وجهتك لاكتشاف المنتجات والعروض المحلية في موريتانيا.</p><small>© <span id="year"></span> Souq MR</small></footer>
-
-  <dialog id="authDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content"><span class="eyebrow">مرحبًا بك في Souq MR</span><h2 id="authTitle">إنشاء حساب</h2><p class="modal-note" id="authNote">أدخل بيانات إنشاء حسابك.</p><form id="authForm"><label data-signup-only>الاسم الكامل<input name="name" required autocomplete="name" placeholder="اسمك"></label><label>البريد الإلكتروني<input name="email" type="email" required autocomplete="email" inputmode="email" placeholder="name@example.com"></label><label data-signup-only>رقم الهاتف<input name="phone" type="tel" autocomplete="tel" placeholder="رقم للتواصل"></label><label data-signup-only>المدينة<select name="city"><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select></label><label>كلمة المرور<input name="password" type="password" minlength="6" required autocomplete="new-password" placeholder="6 أحرف على الأقل"></label><label data-signup-only>نوع الحساب<select name="role"><option value="buyer">مشتري</option><option value="seller">بائع</option></select></label><label data-login-only hidden>نوع الحساب<select name="loginRole"><option value="buyer">مشتري</option><option value="seller">بائع</option></select></label><button class="primary-btn full" type="submit">إنشاء الحساب</button></form><p class="switch-auth">لديك حساب؟ <button id="switchAuth" type="button">تسجيل الدخول</button></p><p class="demo-warning" id="authHelp">يتم إنشاء حسابك عبر البريد الإلكتروني وكلمة المرور. يمكنك الدخول باستخدام بريدك الإلكتروني وكلمة المرور.</p></div></dialog>
-
-  <dialog id="sellDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content"><span class="eyebrow">أضف منتجك</span><h2>إعلان جديد</h2><p class="modal-note">املأ بيانات المنتج لعرضه في السوق.</p><form id="productForm"><label>اسم المنتج<input name="title" required maxlength="70" placeholder="مثال: هاتف Samsung"></label><label>السعر بالأوقية (MRU)<input name="price" type="number" min="1" required placeholder="مثال: 12000"></label><label>القسم<select name="category" id="productCategory"></select></label><label>المدينة<select name="city"><option>نواكشوط</option><option>نواذيبو</option><option>روصو</option><option>كيفه</option><option>أطار</option></select></label><label>العلامة التجارية<input name="brand" maxlength="80" placeholder="مثال: Samsung"></label><label>حالة المنتج<select name="condition"><option value="new">جديد</option><option value="used">مستعمل</option><option value="refurbished">مجدد</option></select></label><label>الكمية المتوفرة<input name="stock" type="number" min="0" value="1" required></label><label>الضمان<input name="warranty" maxlength="120" placeholder="مثال: ضمان شهر"></label><label>معلومات التوصيل<input name="delivery" maxlength="180" placeholder="مثال: التوصيل متاح داخل نواكشوط"></label><label>مميزات المنتج (ميزة في كل سطر)<textarea name="features" rows="3" placeholder="بطارية قوية&#10;شاشة عالية الدقة&#10;مع الملحقات"></textarea></label><label>المواصفات (كل سطر: الخاصية: القيمة)<textarea name="specifications" rows="4" placeholder="اللون: أسود&#10;السعة: 256GB&#10;الذاكرة: 8GB"></textarea></label><label>صورة المنتج (اختياري)<input name="image" type="file" accept="image/png,image/jpeg,image/webp"></label><label>وصف المنتج<textarea name="description" rows="4" maxlength="1200" placeholder="اكتب وصفًا تفصيليًا للمنتج..."></textarea></label><button class="primary-btn full" type="submit">نشر الإعلان</button></form><p class="demo-warning">سيظهر إعلانك في السوق بعد نشره بنجاح.</p></div></dialog>
-
-  <dialog id="productDialog" class="modal"><form method="dialog" class="modal-close"><button aria-label="إغلاق">×</button></form><div class="modal-content" id="productDetails"></div></dialog>
-  <div class="toast" id="toast" role="status"></div>
-  <script type="module" src="app.js"></script>
+    <script>
+        const searchBtn = document.getElementById('searchToggleMobile');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if(searchBtn && mobileSearchInput) {
+            searchBtn.addEventListener('click', () => mobileSearchInput.classList.toggle('hidden'));
+        }
+        function showSection(sectionId) {
+            const mainContent = document.getElementById('main-content');
+            const profileSection = document.getElementById('profile-section');
+            if (sectionId === 'profile-section') {
+                mainContent.classList.add('hidden');
+                profileSection.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                profileSection.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        function openAddModal() {
+            alert('سيتم فتح نافذة إضافة إعلان جديد');
+        }
+    </script>
 </body>
 </html>
