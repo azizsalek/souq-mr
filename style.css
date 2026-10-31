@@ -127,3 +127,14 @@ footer{display:none}
 @media(min-width:701px){
  .phone-layout{border-radius:0 0 28px 28px}
 }
+
+
+/* Bottom navigation — recreate the reference's four gold line icons and raised MRU medallion */
+.mobile-dock{height:104px!important;bottom:0!important;display:grid!important;grid-template-columns:1fr 1fr 112px 1fr 1fr!important;align-items:end!important;justify-items:center!important;padding:15px 24px 18px!important;background:#0a281f!important;border:0!important;border-top:1px solid #a18b55!important;border-radius:0!important;box-shadow:0 -8px 28px #0005!important}
+.mobile-dock:before{content:"";position:absolute;z-index:0;left:50%;top:-48px;transform:translateX(-50%);width:118px;height:100px;border-radius:0 0 58px 58px;background:#0a281f;border:1px solid #a18b55;border-top:0;box-shadow:0 8px 0 -7px #a18b55}
+.mobile-dock a:not(.dock-currency){position:relative;z-index:1;width:52px;height:50px;display:grid;place-items:center;color:#ddc78e;min-width:0}
+.mobile-dock svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.mobile-dock .dock-currency{position:relative;z-index:2;align-self:start;margin-top:-58px;width:104px;height:104px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#f3e1a8,#c9a45c);border:5px solid #17382d;color:#142c21;font-size:25px;font-weight:800;box-shadow:0 4px 14px #0006;text-decoration:none}
+@media(max-width:700px){.mobile-dock{height:104px!important;padding-bottom:17px!important}}
+@media(max-width:430px){.mobile-dock{grid-template-columns:1fr 1fr 104px 1fr 1fr!important;padding-left:14px!important;padding-right:14px!important}.mobile-dock .dock-currency{width:96px;height:96px;font-size:23px;margin-top:-54px}}
+@media(min-width:701px){.mobile-dock{display:none!important}}
